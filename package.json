@@ -1,7 +1,7 @@
 {
   "name": "appBarberShop",
   "version": "1.0.0",
-  "description": "A app to schedule to barbershop services",
+  "description": "A app to schedule to barbershop services.",
   "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
