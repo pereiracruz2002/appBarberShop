@@ -22,7 +22,7 @@ export default class UpdateUserService{
             name,
             password_hash: password,
             email,
-            provider
+            provider,
         })
         return user;
     }

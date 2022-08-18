@@ -16,4 +16,13 @@ model User{
   email String @unique
   password_hash String
   provider Boolean @default(false)
+  file Files?
+  created_at DateTime?
+  updated_at DateTime? 
+}
+
+model Files{
+  id String @id @default(uuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id])
 }

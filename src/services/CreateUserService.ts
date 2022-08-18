@@ -24,7 +24,7 @@ export default class CreateUserService{
             name,
             email,
             password_hash: password,
-            provider
+            provider,
         })
 
         return user;

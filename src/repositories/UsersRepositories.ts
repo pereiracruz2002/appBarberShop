@@ -19,7 +19,7 @@ export default class UsersRepositories{
 
     
     
-    async create(data: Omit<User,'id'>){
+    async create(data: Omit<User,'id'| 'created_at'|'updated_at'>){
         try{
             return this.prisma.user.create({
                 data:{
@@ -31,7 +31,7 @@ export default class UsersRepositories{
         }
     }
 
-    async update(id: string,data: Omit<User,'id'>){
+    async update(id: string,data: Omit<User,'id'| 'created_at'|'updated_at'>){
         return this.prisma.user.update({
             where:{
                 id:id
