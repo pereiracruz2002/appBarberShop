@@ -17,6 +17,16 @@ export default class UsersRepositories{
         })
     }
 
+    async userFindById(id: string){
+        return this.prisma.user.findFirst({
+            where:{
+                id:{
+                    equals:id
+                }
+            }
+        })
+    }
+
     
     
     async create(data: Omit<User,'id'| 'created_at'|'updated_at'>){
@@ -47,8 +57,8 @@ export default class UsersRepositories{
             select:{
                 name: true,
                 email: true,
-                provider: true
-
+                provider: true,
+                file:true
 
             }
         })

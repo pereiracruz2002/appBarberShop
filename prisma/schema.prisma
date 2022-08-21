@@ -17,12 +17,30 @@ model User{
   password_hash String
   provider Boolean @default(false)
   file Files?
-  created_at DateTime?
-  updated_at DateTime? 
+  appointment Appointments[] @relation("UserClient")
+  appointment_provider Appointments[] @relation("UserProvider")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Files{
   id String @id @default(uuid())
+  name String
+  path String
   userId String @unique
   user User @relation(fields: [userId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Appointments{
+  id String @id @default(uuid())
+  date DateTime
+  userId String
+  user User @relation(name:"UserClient", fields: [userId], references: [id])
+  providerId String
+  userProvider User @relation(name: "UserProvider",fields: [providerId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  canceled_at DateTime
 }
